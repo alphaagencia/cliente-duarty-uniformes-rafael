@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-tech font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #E10613;
+    color: #fff;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* --- Assinatura: Linha de Corte Vermelha --- */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-eyebrow text-mute;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-[2px] w-8 bg-red;
+  }
+
+  /* microticks de "marcação de corte" */
+  .cut-rule {
+    position: relative;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #262626 12%, #262626 88%, transparent);
+  }
+  .cut-rule::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    height: 5px;
+    width: 56px;
+    background: #E10613;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-red px-6 py-3.5 text-sm font-semibold text-white
+      transition-colors duration-200 hover:bg-red-deep focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-red;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/15 px-6 py-3.5 text-sm
+      font-semibold text-tech transition-colors duration-200 hover:border-white/40 hover:bg-white/[0.03]
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40;
+  }
+
+  .section-pad {
+    @apply mx-auto max-w-content px-5 sm:px-8;
+  }
+
+  /* --- Hero: visual do modelo (PNG transparente integrado ao fundo) --- */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: transparent;
+  }
+  /* profundidade sutil atrás do corpo — sem glow/neon */
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 8% 4% 2% 4%;
+    border-radius: 40px;
+    background: radial-gradient(58% 52% at 50% 42%, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0) 62%);
+    filter: blur(16px);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-model {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  }
+  /* monograma grande da marca — textura de fundo da seção, não compete com o modelo */
+  .hero-monogram-bg {
+    position: absolute;
+    right: -16%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(40vw, 520px);
+    height: auto;
+    opacity: 0.028;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+/* respeitar redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* textura sutil de concreto/grão */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
