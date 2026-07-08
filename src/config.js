@@ -11,8 +11,7 @@ export const EMAIL = 'contato.duarty@gmail.com'
 export const REGION = 'Canela e Gramado'
 export const REGION_NOTE = 'Entrega grátis em Canela e Gramado · Envio para todo o Brasil'
 
-// PLACEHOLDER — domínio final quando confirmado.
-export const DOMAIN = ''
+export const DOMAIN = 'https://www.duartyuniformes.com.br'
 
 export const INSTAGRAM_HANDLE = 'duarty.streetwear'
 export const INSTAGRAM_URL = 'https://instagram.com/duarty.streetwear'
