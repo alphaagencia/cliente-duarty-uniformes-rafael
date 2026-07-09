@@ -25,7 +25,9 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'border-b border-white/[0.07] bg-ink/85 backdrop-blur-md' : 'bg-transparent'
+        scrolled
+          ? 'border-b border-white/[0.07] bg-ink/95 md:bg-ink/85 md:backdrop-blur-md'
+          : 'bg-transparent'
       }`}
     >
       <div className="section-pad flex h-16 items-center justify-between sm:h-20">
@@ -71,7 +73,7 @@ export default function Header() {
 
       {/* menu mobile */}
       <div
-        className={`overflow-hidden border-t border-white/[0.06] bg-ink/95 backdrop-blur-md lg:hidden ${
+        className={`overflow-hidden border-t border-white/[0.06] bg-ink lg:hidden ${
           open ? 'max-h-96' : 'max-h-0'
         } transition-[max-height] duration-300`}
       >

@@ -9,7 +9,8 @@ export default function Hero() {
       {/* monograma marca d'água */}
       <Monogram className="hero-monogram-bg hidden md:block" />
       {/* brilho vermelho sutil */}
-      <div className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-red/10 blur-[120px]" />
+      {/* brilho vermelho: blur(120px) é caro no mobile */}
+      <div className="pointer-events-none absolute -left-40 top-40 hidden h-96 w-96 rounded-full bg-red/10 blur-[120px] md:block" />
 
       <div className="section-pad relative grid items-center gap-10 pb-16 pt-6 md:grid-cols-[1.05fr_0.95fr] md:pb-24 md:pt-10 lg:pb-28 lg:pt-12">
         {/* coluna texto */}

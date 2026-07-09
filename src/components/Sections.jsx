@@ -564,7 +564,7 @@ export function FAQ() {
 export function CTAFinal() {
   return (
     <section className="grain relative overflow-hidden bg-ink py-24 md:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/10 blur-[120px] md:block" />
       <div className="section-pad relative text-center">
         <Reveal>
           <span className="eyebrow mb-6 justify-center">Vamos começar</span>

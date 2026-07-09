@@ -7,7 +7,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar com a Duarty no WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full border border-white/10 bg-graphite/90 py-3 pl-3 pr-3 shadow-xl shadow-black/40 backdrop-blur-md transition-all duration-300 hover:border-red/40 sm:hover:pr-5"
+      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full border border-white/10 bg-graphite py-3 pl-3 pr-3 shadow-xl shadow-black/40 transition-all duration-300 hover:border-red/40 md:bg-graphite/90 md:backdrop-blur-md sm:hover:pr-5"
     >
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red">
         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white" aria-hidden="true">
