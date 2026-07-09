@@ -1,32 +1,54 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+
+// Observa o elemento e marca como visível uma única vez (substitui framer-motion).
+function useInView(margin = '-80px') {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || inView) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin: margin },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [inView, margin])
+
+  return [ref, inView]
+}
 
 // Reveal sutil no scroll
-export function Reveal({ children, delay = 0, y = 24, className = '' }) {
+export function Reveal({ children, delay = 0, className = '' }) {
+  const [ref, inView] = useInView()
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={ref}
+      className={`reveal ${inView ? 'is-visible' : ''} ${className}`}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 // Assinatura: Linha de Corte Vermelha — divisória que "desenha" no scroll
 export function CutRule({ className = '' }) {
+  const [ref, inView] = useInView('0px')
   return (
     <div className={`relative mx-auto max-w-content px-5 sm:px-8 ${className}`}>
-      <div className="relative h-px w-full bg-white/[0.06]">
-        <motion.span
-          className="absolute -top-[2px] left-0 h-[5px] w-14 origin-left bg-red"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-        />
+      <div ref={ref} className="relative h-px w-full bg-white/[0.06]">
+        <span className={`cut-line absolute -top-[2px] left-0 h-[5px] w-14 bg-red ${inView ? 'is-visible' : ''}`} />
       </div>
     </div>
   )

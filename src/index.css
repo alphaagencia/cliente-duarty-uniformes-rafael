@@ -60,6 +60,42 @@
     @apply mx-auto max-w-content px-5 sm:px-8;
   }
 
+  /* --- Entrada do hero: só transform, nunca opacity (opacity 0 adia FCP/LCP) --- */
+  .rise {
+    animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .rise-1 { animation-delay: 0.06s; }
+  .rise-2 { animation-delay: 0.12s; }
+  .rise-3 { animation-delay: 0.18s; }
+  .rise-4 { animation-delay: 0.24s; }
+  .rise-5 { animation-delay: 0.3s; }
+
+  .hero-visual-in {
+    animation: hero-zoom 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* --- Reveal no scroll (IntersectionObserver) --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cut-line {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.7s ease-out;
+  }
+  .cut-line.is-visible {
+    transform: scaleX(1);
+  }
+
   /* --- Hero: visual do modelo (PNG transparente integrado ao fundo) --- */
   .hero-visual {
     position: relative;
@@ -101,6 +137,24 @@
     opacity: 0.028;
     z-index: 0;
     pointer-events: none;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(0.975);
+  }
+  to {
+    transform: none;
   }
 }
 
