@@ -83,12 +83,12 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 620px;
+    max-width: 690px;
     height: auto;
     display: block;
     object-fit: contain;
     object-position: center bottom;
-    filter: contrast(1.03) drop-shadow(0 34px 70px rgba(0, 0, 0, 0.6));
+    filter: contrast(1.02) drop-shadow(0 34px 70px rgba(0, 0, 0, 0.55));
   }
   /* monograma grande da marca — textura de fundo da seção, não compete com o modelo */
   .hero-monogram-bg {

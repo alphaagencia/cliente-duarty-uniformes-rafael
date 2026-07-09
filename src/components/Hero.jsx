@@ -85,7 +85,7 @@ export default function Hero() {
 
         {/* coluna imagem */}
         <motion.div
-          className="relative"
+          className="relative lg:-ml-6 xl:-ml-12"
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease }}
@@ -95,8 +95,8 @@ export default function Hero() {
               src={heroModel}
               alt="Equipe vestindo uniformes personalizados Duarty — polo, moletom e boné"
               className="hero-model"
-              width="1000"
-              height="1250"
+              width="1050"
+              height="1312"
               fetchpriority="high"
               decoding="async"
             />
