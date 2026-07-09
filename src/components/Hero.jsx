@@ -97,6 +97,8 @@ export default function Hero() {
               className="hero-model"
               width="745"
               height="992"
+              fetchpriority="high"
+              decoding="async"
             />
             {/* etiqueta de marcação */}
             <div className="absolute bottom-1 left-1 z-[3] flex items-center gap-2">
