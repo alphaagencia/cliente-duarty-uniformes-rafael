@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Monogram } from './Brand'
 import { waLink } from '../config'
-import heroModel from '../assets/img/hero-model.webp'
+// LCP: servida de /public com preload no index.html (descoberta antecipada no mobile)
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -92,7 +92,9 @@ export default function Hero() {
         >
           <div className="hero-visual">
             <img
-              src={heroModel}
+              src="/hero-model.webp"
+              srcSet="/hero-model-sm.webp 560w, /hero-model.webp 1050w"
+              sizes="(max-width: 768px) 92vw, 620px"
               alt="Equipe vestindo uniformes personalizados Duarty — polo, moletom e boné"
               className="hero-model"
               width="1050"
