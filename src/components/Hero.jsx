@@ -93,10 +93,10 @@ export default function Hero() {
           <div className="hero-visual">
             <img
               src={heroModel}
-              alt="Modelo vestindo moletom branco personalizado da Duarty com boné"
+              alt="Equipe vestindo uniformes personalizados Duarty — polo, moletom e boné"
               className="hero-model"
-              width="745"
-              height="992"
+              width="1000"
+              height="1250"
               fetchpriority="high"
               decoding="async"
             />
