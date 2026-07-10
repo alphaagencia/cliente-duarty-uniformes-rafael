@@ -33,6 +33,7 @@ import port6 from '../assets/img/port-6.webp'
 /* ---------- Faixa de confiança ---------- */
 const PILARES = [
   'Fabricação própria (corte, costura, estampa)',
+  'Produção com energia solar',
   'Estampa DTF de alta definição',
   'Sem quantidade mínima',
   'Descontos progressivos a cada 10 peças',
@@ -55,6 +56,24 @@ export function TrustBar() {
   )
 }
 
+/* Selo discreto de produção com energia renovável */
+function SolarBadge({ className = '' }) {
+  return (
+    <div
+      className={`inline-flex items-center gap-3 rounded-sm border border-white/10 bg-graphite/50 px-4 py-3 ${className}`}
+    >
+      <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 stroke-red" fill="none" strokeWidth="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" strokeLinecap="round" />
+      </svg>
+      <div className="leading-tight">
+        <p className="text-[13px] font-semibold text-white">Produção com energia renovável</p>
+        <p className="mt-0.5 text-xs text-mute">100% energia solar na fabricação</p>
+      </div>
+    </div>
+  )
+}
+
 /* ---------- Sobre ---------- */
 export function About() {
   return (
@@ -64,7 +83,7 @@ export function About() {
           <div className="relative overflow-hidden rounded-sm border border-white/10">
             <img
               src={aboutImg}
-              alt="Close-up de moletom Duarty com bordado do monograma"
+              alt="Close-up de moletom Duarty com a marca aplicada no capuz"
               className="aspect-[4/3] w-full object-cover"
               loading="lazy"
             />
@@ -97,6 +116,7 @@ export function About() {
               empresa é percebida.
             </p>
           </div>
+          <SolarBadge className="mt-8" />
         </Reveal>
       </div>
     </section>
@@ -336,6 +356,7 @@ const DIFERENCIAIS = [
   'Tamanhos do infantil ao adulto G4, com opção sob medida.',
   'Acabamento premium, peça a peça, feito com cuidado.',
   'Dois anos de mercado, entre 150 e 200 clientes atendidos.',
+  'Produção com energia renovável: a fabricação funciona com energia solar.',
 ]
 
 export function Diferenciais() {
@@ -354,7 +375,11 @@ export function Diferenciais() {
 
         <div className="mt-12 grid gap-x-10 gap-y-px sm:grid-cols-2">
           {DIFERENCIAIS.map((d, i) => (
-            <Reveal key={d} delay={(i % 2) * 0.06}>
+            <Reveal
+              key={d}
+              delay={(i % 2) * 0.06}
+              className={i === DIFERENCIAIS.length - 1 && DIFERENCIAIS.length % 2 ? 'sm:col-span-2' : ''}
+            >
               <div className="flex items-start gap-4 border-t border-white/[0.07] py-5">
                 <span className="mt-0.5 font-display text-sm font-bold text-red">{String(i + 1).padStart(2, '0')}</span>
                 <p className="text-[15px] leading-relaxed text-tech">{d}</p>
@@ -429,7 +454,7 @@ export function Processo() {
 const PORT = [
   { img: streetTerceirao, alt: 'Moletom com estampa autoral nas costas', span: 'row-span-2' },
   { img: port5, alt: 'Uniforme personalizado vestido em ambiente urbano', span: '' },
-  { img: port3, alt: 'Moletom preto com bordado' , span: '' },
+  { img: port3, alt: 'Moletom preto com estampa aplicada', span: '' },
   { img: port6, alt: 'Boné personalizado Duarty', span: '' },
   { img: port4, alt: 'Detalhe de moletom com estampa', span: '' },
 ]
@@ -443,7 +468,7 @@ export function Portfolio() {
             Peças que representam marcas reais.
           </SectionHeading>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-mute">
-            Veja exemplos de uniformes, peças personalizadas, aplicações, bordados e detalhes
+            Veja exemplos de uniformes, peças personalizadas, aplicações de marca e detalhes
             produzidos pela Duarty.
           </p>
         </Reveal>
